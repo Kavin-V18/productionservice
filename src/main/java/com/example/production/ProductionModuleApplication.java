@@ -1,13 +1,14 @@
-package com.example.ProductionModule;
+package com.example.production;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class ProductionModuleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProductionModuleApplication.class, args);
 	}
-
 }
