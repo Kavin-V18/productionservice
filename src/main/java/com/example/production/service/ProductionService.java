@@ -1,13 +1,13 @@
-package com.example.ProductionModule.service;
+package com.example.production.service;
 
-import com.example.ProductionModule.dto.ProductionOrdersDto;
+import com.example.production.dto.ProductionOrdersDto;
 
 import java.util.List;
 
 public interface ProductionService {
 
     ProductionOrdersDto createProductionOrdersDto(ProductionOrdersDto productionOrdersDto);
-    ProductionOrdersDto getProductionOrdersDtoById(int id);
+    ProductionOrderResponse getProductionOrdersDtoById(int id);
     List<ProductionOrdersDto> getAllProductionOrdersDto();
     ProductionOrdersDto updateProductionOrdersDto(int id, ProductionOrdersDto productionOrdersDto);
     String deleteProductionOrdersDto(int id);

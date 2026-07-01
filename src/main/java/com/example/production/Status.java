@@ -1,4 +1,4 @@
-package com.example.ProductionModule;
+package com.example.production;
 
 public enum Status {
     PENDING,IN_PROGRESS,COMPLETED,CANCELLED
