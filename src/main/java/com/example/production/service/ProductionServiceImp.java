@@ -61,8 +61,6 @@ public class ProductionServiceImp implements  ProductionService{
             throw new EntityNotFoundException("Car Model not found");
         }
         ProductionOrders existing=productionOrdersRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        existing.setCreatedBy(productionOrdersDto.getCreatedBy());
-        existing.setLastModifiedBy(productionOrdersDto.getLastModifiedBy());
         existing.setStatus(productionOrdersDto.getStatus());
         existing.setOrderNumber(productionOrdersDto.getOrderNumber());
         existing.setActualEndDate(productionOrdersDto.getActualEndDate());
@@ -78,5 +76,4 @@ public class ProductionServiceImp implements  ProductionService{
         productionOrdersRepository.deleteById(id);
         return "deleted successfully";
     }
-
 }

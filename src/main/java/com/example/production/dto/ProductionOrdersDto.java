@@ -9,14 +9,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductionOrdersDto {
-
     private String orderNumber;
     //foreignkey--manufacturing plant
     private Long manufacturingPlant;
@@ -27,14 +25,14 @@ public class ProductionOrdersDto {
     @NotNull
     @Column(nullable = false)
     @Min(1)
-    private int targetQuantity;
+    private Integer targetQuantity;
     @Min(0)
-    private int completedQuantity;
+    private Integer completedQuantity;
     private LocalDate expectedEndDate;
-    private LocalDateTime actualEndDate;
-    private LocalDateTime createdAt;
+    private LocalDate actualEndDate;
+    private LocalDate createdAt;
     private Long createdBy;
-    private LocalDateTime lastModifiedAt;
+    private LocalDate lastModifiedAt;
     private Long lastModifiedBy;
-    private boolean deleted;
+    private Boolean deleted;
 }

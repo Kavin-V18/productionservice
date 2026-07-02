@@ -8,15 +8,14 @@ import org.hibernate.annotations.SoftDeleteType;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
-
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.Clock;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 
 @Table(name="productionorders",schema = "public")
 @Data
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @SoftDelete(strategy = SoftDeleteType.DELETED, columnName = "deleted")
 public class ProductionOrders {
     @Id
@@ -33,34 +32,34 @@ public class ProductionOrders {
     @Column(nullable = false)
     private Status status;
     @Column(nullable = false,name="target_quantity")
-    private int targetQuantity;
+    private Integer targetQuantity;
     @Column(name ="completed_quantity")
-    private int completedQuantity;
+    private Integer completedQuantity;
     @Column(name ="expected_end_date")
     private LocalDate expectedEndDate;
     @Column(name ="actual_end_date")
-    private LocalDateTime actualEndDate;
+    private LocalDate actualEndDate;
     @CreationTimestamp
     @Column(name ="created_at")
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
     @CreatedBy
     @Column(name ="created_by")
     private Long createdBy;
     @UpdateTimestamp
     @Column(name ="last_modified_at")
-    private LocalDateTime lastModifiedAt;
+    private LocalDate lastModifiedAt;
     @LastModifiedBy
     @Column(name ="last_modified_by")
     private Long lastModifiedBy;
     @Column(insertable=false, updatable=false)
-    private boolean deleted;
+    private Boolean deleted;
 
     @PrePersist
     @PreUpdate
     private void validateAndUpdateEndDate() {
         if (this.status == Status.COMPLETED) {
             if (this.actualEndDate == null) {
-                this.actualEndDate = LocalDateTime.now(Clock.systemDefaultZone());
+                this.actualEndDate = LocalDate.now(Clock.systemDefaultZone());
             }
         } else {
             this.actualEndDate = null;

@@ -35,6 +35,8 @@ public class ProductionOrdersMapper {
         productionOrders.setExpectedEndDate(dto.getExpectedEndDate());
         productionOrders.setLastModifiedBy(dto.getLastModifiedBy());
         productionOrders.setCreatedBy(dto.getCreatedBy());
+        productionOrders.setManufacturingPlant(dto.getManufacturingPlant());
+        productionOrders.setCarModel(dto.getCarModel());
         return productionOrders;
     }
 }

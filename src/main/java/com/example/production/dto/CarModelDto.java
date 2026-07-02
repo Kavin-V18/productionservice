@@ -23,9 +23,10 @@ public class CarModelDto {
     private List<String> colorOptions;
     private LocalDate launchDate;
     @ColumnDefault("true")
-    private boolean isActive;
+    private Boolean active;
     private LocalDateTime createdAt;
     private Long createdBy;
     private LocalDateTime lastModifiedAt;
     private Long lastModifiedBy;
+    private Boolean deleted;
 }
