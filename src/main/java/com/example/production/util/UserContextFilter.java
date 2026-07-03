@@ -16,6 +16,7 @@ public class UserContextFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
         Long userId = Long.valueOf(request.getHeader("X-User-Id"));
+          logger.info("userId in production"+userId);
         if (userId != null) {
             UserContext.setUserId(userId);
         }
